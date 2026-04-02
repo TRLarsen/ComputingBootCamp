@@ -1,3 +1,5 @@
+HASH := #
+
 serve: install
 	bundle exec jekyll serve --livereload
 
@@ -8,7 +10,7 @@ build: install
 	bundle exec jekyll build
 
 check_links: build
-	bundle exec htmlproofer --allow_missing_href true --ignore_missing_alt true --swap_urls '^\/ComputingBootCamp:,https://www\.freertos\.org([^#]*)#.*:https://www.freertos.org\1' --ignore-status-codes "0,301,302,403,429,500,503" --enforce_https false ./_site
+	bundle exec htmlproofer --allow_missing_href true --ignore_missing_alt true --swap_urls '^\/ComputingBootCamp:,https://www\.freertos\.org([^$(HASH)]*)$(HASH).*:https://www.freertos.org\1' --ignore-status-codes "0,301,302,403,429,500,503" --enforce_https false ./_site
 
 
 
